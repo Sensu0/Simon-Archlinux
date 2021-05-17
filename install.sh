@@ -71,11 +71,13 @@ zsh man pulseaudio pulseaudio-alsa themix-full-git qt5ct tldr vim wget brave-bin
 #sudo systemctl start teamviewerd.service windscribe.service
 #
 # Install omz and plugins
-(
 
 cd
 # Use sed to prevent zsh from launching/rebooting after omz has installed
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed 's/exec zsh -l//g')"
+# This will make it possible to execute commands after omz installation.
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed 's/exec zsh -l//g')"
+cd -
+cp -vr .zprofile .zshrc ~/
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 # Always merge on git pull
 cd ~/.oh-my-zsh/custom/themes/powerlevel10k
@@ -88,5 +90,3 @@ cd zsh-autosuggestions
 git config pull.rebase false
 cd ../zsh-syntax-highlighting
 git config pull.rebase false
-
-)
