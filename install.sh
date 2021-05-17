@@ -20,7 +20,7 @@ makepkg -si --noconfirm && \
 `# Proceed and install all the software` \
 \
 `# WM and xorg` \
-yay -S --noconfirm --sudoloop awesome xorg
+yay -S --noconfirm --sudoloop awesome xorg \
 `# tools` \
 vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput \
 \
