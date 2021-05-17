@@ -12,7 +12,7 @@ sudo pacman -Syu
 
 # Install AUR helper yay
 
-mkdir ~/git-clones ; \
+mkdir -p ~/git-clones ; \
 git clone https://aur.archlinux.org/yay.git ~/git-clones/yay ; \
 cd ~/git-clones/yay
 makepkg -si --noconfirm && \
@@ -26,46 +26,46 @@ vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput \
 \
 okular hplip glances man tldr base-devel pcmanfm qterminal pulseaudio-alsa \
 \
-gimp wget bash zsh links kdeconnect ranger i3lock pulseaudio themix-full-git \
-\
-woeusb unetbootin \
-\
-`# system tools ` \
-htop gnome-disk-utility gparted bashtop lshw neofetch \
-\
-timeshift \
-\
-`# multimedia and entertainment` \
-kdenlive vlc obs-studio subtitleeditor ristretto makemkv \
-\
-spotify electronplayer \
-\
-`# Internet` \
-firefox brave-bin google-chrome qbittorrent thunderbird windscribe \
-\
-`# gaming` \
-steam lutris discord \
-\
-`# emulators` \
-pcsx2-64bit-git dolphin-emu-beta-git duckstation-git kega-fusion rpcs3-git mupen64plus-git m64py \
-\
-mednaffe desmume-git snes9x-gtk vbam-wx mednafen ppsspp \
-\
-`# fonts` \
-noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-win10 \
-\
-ttf-ms-fonts steam-fonts ttf-dejavu-sans-mono-powerline-git \
-\
-`# other` \
-slack-desktop teamviewer discord-rpc-api \
-\
-xpadneo vim-tabnine-git vim-badwolf-git ksnip-git woeusb 
-
+gimp wget bash zsh links kdeconnect ranger i3lock pulseaudio themix-full-git #\
+#\
+#woeusb unetbootin \
+#\
+#`# system tools ` \
+#htop gnome-disk-utility gparted bashtop lshw neofetch \
+#\
+#timeshift \
+#\
+#`# multimedia and entertainment` \
+#kdenlive vlc obs-studio subtitleeditor ristretto makemkv \
+#\
+#spotify electronplayer \
+#\
+#`# Internet` \
+#firefox brave-bin google-chrome qbittorrent thunderbird windscribe \
+#\
+#`# gaming` \
+#steam lutris discord \
+#\
+#`# emulators` \
+#pcsx2-64bit-git dolphin-emu-beta-git duckstation-git kega-fusion rpcs3-git mupen64plus-git m64py \
+#\
+#mednaffe desmume-git snes9x-gtk vbam-wx mednafen ppsspp \
+#\
+#`# fonts` \
+#noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-win10 \
+#\
+#ttf-ms-fonts steam-fonts ttf-dejavu-sans-mono-powerline-git \
+#\
+#`# other` \
+#slack-desktop teamviewer discord-rpc-api \
+#\
+#xpadneo vim-tabnine-git vim-badwolf-git ksnip-git woeusb 
+#
 # Enable and start necessary services for Teamviewer and Windscribe
-
-sudo systemctl enable teamviewerd.service windscribe.service
-sudo systemctl start teamviewerd.service windscribe.service
-
+#
+#sudo systemctl enable teamviewerd.service windscribe.service
+#sudo systemctl start teamviewerd.service windscribe.service
+#
 # Install omz and plugins
 (
 
