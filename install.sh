@@ -1,6 +1,8 @@
 #!/bin/sh
 # copy pacman config before executing pacman
-sudo cp -vr pacman.conf /etc/pacman.conf
+# also
+sudo cp -vr pacman.conf /etc/pacman.conf && \
+cp -vr .vimrc ~/.vimrc
 
 # This will install all packages I use in Arch Linux.
 # 
@@ -12,8 +14,8 @@ sudo pacman -Syu
 
 # Install AUR helper yay
 
-mkdir -p ~/git-clones ; \
-git clone https://aur.archlinux.org/yay.git ~/git-clones/yay ; \
+mkdir -p ~/git-clones
+git clone https://aur.archlinux.org/yay.git ~/git-clones/yay
 cd ~/git-clones/yay
 makepkg -si --noconfirm && \
 \
@@ -21,14 +23,16 @@ makepkg -si --noconfirm && \
 \
 `# WM and xorg` \
 yay -S --noconfirm --sudoloop awesome xorg \
-`# tools` \
-vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput \
-\
-okular hplip glances man tldr base-devel pcmanfm qterminal pulseaudio-alsa \
-\
-gimp wget bash zsh links kdeconnect ranger i3lock pulseaudio themix-full-git #\
+`# Testing` \
+zsh man pulseaudio pulseaudio-alsa themix-full-git qt5ct tldr
+#`# tools` \
+#vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput \
 #\
-#woeusb unetbootin \
+#okular hplip glances man tldr base-devel pcmanfm qterminal pulseaudio-alsa \
+#\
+#gimp wget bash zsh links kdeconnect ranger i3lock pulseaudio themix-full-git \
+#\
+#woeusb unetbootin qt5ct \
 #\
 #`# system tools ` \
 #htop gnome-disk-utility gparted bashtop lshw neofetch \
@@ -71,7 +75,7 @@ gimp wget bash zsh links kdeconnect ranger i3lock pulseaudio themix-full-git #\
 
 cd
 # Use sed to prevent zsh from launching/rebooting after omz has installed
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed 's/exec zsh -l//g')"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 # Always merge on git pull
 cd ~/.oh-my-zsh/custom/themes/powerlevel10k
