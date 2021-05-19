@@ -67,10 +67,10 @@ kvantum-qt5
 #\
 #xpadneo vim-tabnine-git vim-badwolf-git ksnip-git woeusb 
 #
-# Enable and start necessary services for Teamviewer and Windscribe
+# Enable and start necessary services for Teamviewer, Windscribe (VPN) and SSH
 #
-#sudo systemctl enable teamviewerd.service windscribe.service
-#sudo systemctl start teamviewerd.service windscribe.service
+#sudo systemctl enable teamviewerd.service windscribe.service sshd.service
+#sudo systemctl start teamviewerd.service windscribe.service sshd.service
 #
 # Install omz and plugins
 
