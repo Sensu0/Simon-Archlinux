@@ -22,15 +22,17 @@ makepkg -si --noconfirm && \
 `# Proceed and install all the software` \
 \
 `# WM and xorg` \
-yay -S --noconfirm --sudoloop awesome xorg \
+yay -S --noconfirm --sudoloop awesome xorg xorg-xinit \
 `# Testing` \
-zsh man pulseaudio pulseaudio-alsa themix-full-git qt5ct tldr vim wget brave-bin
+zsh man pulseaudio pulseaudio-alsa lxappearance qt5ct tldr vim wget brave-bin qterminal openssh \
+\
+kvantum-qt5
 #`# tools` \
-#vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput \
+#vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput kvantum-qt5 \
 #\
-#okular hplip glances man tldr base-devel pcmanfm qterminal pulseaudio-alsa \
+#okular hplip glances man tldr base-devel pcmanfm qterminal pulseaudio-alsa openssh \
 #\
-#gimp wget bash zsh links kdeconnect ranger i3lock pulseaudio themix-full-git \
+#gimp wget bash zsh links kdeconnect ranger i3lock pulseaudio lxappearance \
 #\
 #woeusb unetbootin qt5ct \
 #\
@@ -61,7 +63,7 @@ zsh man pulseaudio pulseaudio-alsa themix-full-git qt5ct tldr vim wget brave-bin
 #ttf-ms-fonts steam-fonts ttf-dejavu-sans-mono-powerline-git \
 #\
 #`# other` \
-#slack-desktop teamviewer discord-rpc-api \
+#slack-desktop teamviewer discord-rpc-api vimix-icon-theme \
 #\
 #xpadneo vim-tabnine-git vim-badwolf-git ksnip-git woeusb 
 #
