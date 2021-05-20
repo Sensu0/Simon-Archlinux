@@ -1,8 +1,11 @@
 #!/bin/sh
-# copy pacman config before executing pacman
-# also
-sudo cp -vr pacman.conf /etc/pacman.conf && \
+
+echo "Copying pacman, rofi and awesome config files recursively
+"
+sudo cp -vr pacman.conf /etc/pacman.conf
 cp -vr .vimrc ~/.vimrc
+cp -vr rofi ~/.config/rofi
+cp -vr awesome ~/.config/awesome
 
 # This will install all packages I use in Arch Linux.
 # 
@@ -24,11 +27,11 @@ makepkg -si --noconfirm && \
 `# WM and xorg` \
 yay -S --noconfirm --sudoloop awesome xorg xorg-xinit \
 `# Testing` \
-zsh man pulseaudio pulseaudio-alsa lxappearance qt5ct tldr vim wget brave-bin qterminal openssh \
+zsh man pulseaudio pulseaudio-alsa lxappearance qt5ct tldr vim wget brave-bin qterminal openssh man-pages \
 \
 kvantum-qt5
 #`# tools` \
-#vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput kvantum-qt5 \
+#vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput kvantum-qt5 man-pages \
 #\
 #okular hplip glances man tldr base-devel pcmanfm qterminal pulseaudio-alsa openssh \
 #\
@@ -79,16 +82,44 @@ cd
 # This will make it possible to execute commands after omz installation.
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed 's/exec zsh -l//g')"
 cd -
-cp -vr .zprofile .zshrc ~/
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+
+echo "
+Copying .zprofile, .zshrc and xinitrc recursively.
+"
+cp -vr .zprofile .zshrc xinitrc ~/
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+~/.oh-my-zsh/custom/themes/powerlevel10k
 # Always merge on git pull
 cd ~/.oh-my-zsh/custom/themes/powerlevel10k
 git config pull.rebase false
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions \
+~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 cd ~/.oh-my-zsh/custom/plugins/
+
+# Need to chmod for custupdate function to work (see .zshrc)
 chmod -R 755 ./zsh-syntax-highlighting/ ./zsh-autosuggestions/
 cd zsh-autosuggestions
 git config pull.rebase false
 cd ../zsh-syntax-highlighting
 git config pull.rebase false
+
+
+# Set global git configs for machine
+echo " 
+All software is now installed. If you plan on using 'git',
+then please input name, email and default editor to set it globally.
+If you don't want this, just press 'Ctrl+C' at each prompt.
+
+"
+read -p "What is EDITOR do you want to set as default for 'git'?
+" $editor
+git config --global core.editor "$editor"
+read -p "What is EMAIL do you want to set as default for 'git'?
+" $email
+git config --global user.email "$email"
+read -p "What is NAME do you want to set as default for 'git'?
+" $name
+git config --global user.name "$name"
