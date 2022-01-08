@@ -30,11 +30,11 @@ yay -S --noconfirm --sudoloop awesome xorg xorg-xinit \
 `# Testing` \
 zsh man lxappearance qt5ct tldr vim wget brave-bin qterminal openssh man-pages \
 \
-kvantum-qt5 pavucontrol ttf-dejavu-sans-mono-powerline-git breeze breeze-gtk
+kvantum-qt5 pavucontrol ttf-dejavu-sans-mono-powerline-git breeze breeze-gtk alsa-utils
 #`# tools` \
 #vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput kvantum-qt5 man-pages \
 #\
-#okular hplip glances man tldr base-devel pcmanfm qterminal openssh \
+#okular hplip glances man tldr base-devel pcmanfm qterminal openssh alsa-utils \
 #\
 #gimp wget bash zsh links kdeconnect ranger i3lock lxappearance \
 #\
