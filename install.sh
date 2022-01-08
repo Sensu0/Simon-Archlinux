@@ -23,21 +23,22 @@ cd ~/git-clones/yay
 makepkg -si --noconfirm && \
 \
 `# Proceed and install all the software` \
+
 \
 `# WM and xorg` \
 yay -S --noconfirm --sudoloop awesome xorg xorg-xinit \
 `# Testing` \
-zsh man pulseaudio pulseaudio-alsa lxappearance qt5ct tldr vim wget brave-bin qterminal openssh man-pages \
+zsh man lxappearance qt5ct tldr vim wget brave-bin qterminal openssh man-pages \
 \
-kvantum-qt5
+kvantum-qt5 pavucontrol ttf-dejavu-sans-mono-powerline-git breeze breeze-gtk
 #`# tools` \
 #vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput kvantum-qt5 man-pages \
 #\
-#okular hplip glances man tldr base-devel pcmanfm qterminal pulseaudio-alsa openssh \
+#okular hplip glances man tldr base-devel pcmanfm qterminal openssh \
 #\
-#gimp wget bash zsh links kdeconnect ranger i3lock pulseaudio lxappearance \
+#gimp wget bash zsh links kdeconnect ranger i3lock lxappearance \
 #\
-#woeusb unetbootin qt5ct \
+#woeusb unetbootin qt5ct pavucontrol \
 #\
 #`# system tools ` \
 #htop gnome-disk-utility gparted bashtop lshw neofetch \

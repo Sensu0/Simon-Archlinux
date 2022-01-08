@@ -575,6 +575,10 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 --Autostart
-awful.spawn.with_shell("steam")
-awful.spawn.with_shell("discord")
-awful.spawn.with_shell("kdeconnect-indicator")
+-- awful.spawn.with_shell("steam")
+-- awful.spawn.with_shell("discord")
+-- awful.spawn.with_shell("kdeconnect-indicator")
+awful.spawn.with_shell("qterminal -e echo 'Setup themes for programs and delete the bottom lines of ~/.config/awesome/rc.lua when done'")
+awful.spawn.with_shell("qt5ct")
+awful.spawn.with_shell("kvantum-qt5")
+awful.spawn.with_shell("lxappearance")
