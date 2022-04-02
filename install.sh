@@ -56,7 +56,7 @@ steam lutris discord \
 \
 `# emulators` \
 pcsx2 dolphin-emu-beta-git duckstation-git kega-fusion rpcs3-git mupen64plus-git m64py \
-#\
+\
 mednaffe desmume-git snes9x-gtk vbam-wx mednafen ppsspp \
 \
 `# fonts` \
