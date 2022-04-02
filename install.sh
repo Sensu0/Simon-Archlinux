@@ -1,10 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "Copying pacman, rofi and awesome config files recursively
 "
 sudo cp -vr pacman.conf /etc/pacman.conf
 cp -vr .vimrc ~/.vimrc
-cp -vr rofi ~/.config/rofi
+cp -vr rofi ~/.config/rofi || \
+(mkdir -v ~/.config/rofi ~/.config/awesome && \
+cp -vr rofi ~/.config/rofi)
 cp -vr awesome ~/.config/awesome
 
 # This will install all packages I use in Arch Linux.
@@ -27,62 +29,56 @@ makepkg -si --noconfirm && \
 \
 `# WM and xorg` \
 yay -S --noconfirm --sudoloop awesome xorg xorg-xinit \
-`# Testing` \
-zsh man lxappearance qt5ct tldr vim wget brave-bin qterminal openssh man-pages \
+`# tools` \
+vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput kvantum-qt5 man-pages \
 \
-kvantum-qt5 pavucontrol ttf-dejavu-sans-mono-powerline-git breeze breeze-gtk alsa-utils
-#`# tools` \
-#vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput kvantum-qt5 man-pages \
+okular hplip glances man tldr base-devel pcmanfm qterminal openssh alsa-utils \
+\
+gimp wget bash zsh links kdeconnect ranger i3lock lxappearance \
+\
+woeusb unetbootin qt5ct pavucontrol \
+\
+`# system tools ` \
+htop gnome-disk-utility gparted bashtop lshw neofetch \
+\
+timeshift \
+\
+`# multimedia and entertainment` \
+kdenlive vlc obs-studio subtitleeditor ristretto makemkv \
+\
+electronplayer \
+\
+`# Internet` \
+firefox brave-bin google-chrome qbittorrent thunderbird \
+\
+`# gaming` \
+steam lutris discord \
+\
+`# emulators` \
+pcsx2 dolphin-emu-beta-git duckstation-git kega-fusion rpcs3-git mupen64plus-git m64py \
 #\
-#okular hplip glances man tldr base-devel pcmanfm qterminal openssh alsa-utils \
-#\
-#gimp wget bash zsh links kdeconnect ranger i3lock lxappearance \
-#\
-#woeusb unetbootin qt5ct pavucontrol \
-#\
-#`# system tools ` \
-#htop gnome-disk-utility gparted bashtop lshw neofetch \
-#\
-#timeshift \
-#\
-#`# multimedia and entertainment` \
-#kdenlive vlc obs-studio subtitleeditor ristretto makemkv \
-#\
-#spotify electronplayer \
-#\
-#`# Internet` \
-#firefox brave-bin google-chrome qbittorrent thunderbird windscribe \
-#\
-#`# gaming` \
-#steam lutris discord \
-#\
-#`# emulators` \
-#pcsx2-64bit-git dolphin-emu-beta-git duckstation-git kega-fusion rpcs3-git mupen64plus-git m64py \
-#\
-#mednaffe desmume-git snes9x-gtk vbam-wx mednafen ppsspp \
-#\
-#`# fonts` \
-#noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-win10 \
-#\
-#ttf-ms-fonts steam-fonts ttf-dejavu-sans-mono-powerline-git \
-#\
-#`# other` \
-#slack-desktop teamviewer discord-rpc-api vimix-icon-theme \
-#\
-#xpadneo vim-tabnine-git vim-badwolf-git ksnip-git woeusb 
+mednaffe desmume-git snes9x-gtk vbam-wx mednafen ppsspp \
+\
+`# fonts` \
+noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-win10 \
+\
+ttf-ms-fonts steam-fonts ttf-dejavu-sans-mono-powerline-git \
+\
+`# other` \
+slack-desktop teamviewer discord-rpc-api vimix-icon-theme breeze breeze-gtk \
+\
+xpadneo vim-tabnine-git vim-badwolf-git ksnip-git woeusb
 #
-# Enable and start necessary services for Teamviewer, Windscribe (VPN) and SSH
+# Enable and start necessary services for Teamviewer and SSH
 #
-#sudo systemctl enable teamviewerd.service windscribe.service sshd.service
-#sudo systemctl start teamviewerd.service windscribe.service sshd.service
+sudo systemctl enable teamviewerd.service sshd.service
+sudo systemctl start teamviewerd.service sshd.service
 #
 # Install omz and plugins
 
-cd
 # Use sed to prevent zsh from launching/rebooting after omz has installed
 # This will make it possible to execute commands after omz installation.
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed 's/exec zsh -l//g')"
-cd -
+sh -c "$(curl -fsSLo ~/install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed 's/exec zsh -l//g')"
 
 echo "
 Copying .zprofile, .zshrc and xinitrc recursively.
@@ -106,7 +102,6 @@ cd zsh-autosuggestions
 git config pull.rebase false
 cd ../zsh-syntax-highlighting
 git config pull.rebase false
-
 
 # Set global git configs for machine
 echo " 
