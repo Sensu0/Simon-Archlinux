@@ -67,7 +67,7 @@ ttf-ms-fonts steam-fonts ttf-dejavu-sans-mono-powerline-git \
 `# other` \
 slack-desktop teamviewer discord-rpc-api vimix-icon-theme breeze breeze-gtk \
 \
-xpadneo vim-tabnine-git vim-badwolf-git ksnip-git woeusb
+xpadneo-dkms vim-tabnine-git vim-badwolf-git ksnip-git woeusb
 #
 # Enable and start necessary services for Teamviewer and SSH
 #
