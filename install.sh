@@ -15,20 +15,21 @@ cp -vr awesome ~/.config/awesome
 # before and after comments in the same line. The "\" will make the script ignore
 # whatever comes after it. Thus allowing us to make a new line after it.
 #
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 
 # Install AUR helper yay
 
 mkdir -p ~/git-clones
 git clone https://aur.archlinux.org/yay.git ~/git-clones/yay
 cd ~/git-clones/yay
-makepkg -si --noconfirm && \
+makepkg -si --noconfirm && cd - && \
 \
 `# Proceed and install all the software` \
-
+\
 \
 `# WM and xorg` \
-yay -S --noconfirm --sudoloop awesome xorg xorg-xinit \
+yay -S --noconfirm --noremovemake --nocleanafter --noredownload \
+--batchinstall --norebuild --sudoloop awesome xorg xorg-xinit \
 `# tools` \
 vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput kvantum-qt5 man-pages \
 \
@@ -39,9 +40,7 @@ gimp wget bash zsh links kdeconnect ranger i3lock lxappearance \
 woeusb unetbootin qt5ct pavucontrol \
 \
 `# system tools ` \
-htop gnome-disk-utility gparted bashtop lshw neofetch \
-\
-timeshift \
+htop gnome-disk-utility gparted bpytop lshw neofetch \
 \
 `# multimedia and entertainment` \
 kdenlive vlc obs-studio subtitleeditor ristretto makemkv \
@@ -49,20 +48,20 @@ kdenlive vlc obs-studio subtitleeditor ristretto makemkv \
 electronplayer \
 \
 `# Internet` \
-firefox brave-bin google-chrome qbittorrent thunderbird \
+firefox brave-bin google-chrome qbittorrent thunderbird nordvpn-bin davmail \
 \
 `# gaming` \
 steam lutris discord \
 \
 `# emulators` \
-pcsx2 dolphin-emu-beta-git duckstation-git kega-fusion rpcs3-git mupen64plus-git m64py \
+pcsx2 dolphin-emu duckstation-git kega-fusion rpcs3-git mupen64plus-git m64py \
 \
-mednaffe desmume-git snes9x-gtk vbam-wx mednafen ppsspp \
+mednaffe agg desmume-git snes9x-gtk vbam-wx mednafen ppsspp \
 \
 `# fonts` \
 noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-win10 \
 \
-ttf-ms-fonts steam-fonts ttf-dejavu-sans-mono-powerline-git \
+ttf-ms-fonts powerline-fonts awesome-terminal-fonts ttf-dejavu \
 \
 `# other` \
 slack-desktop teamviewer discord-rpc-api vimix-icon-theme breeze breeze-gtk \
@@ -71,8 +70,9 @@ xpadneo-dkms vim-tabnine-git vim-badwolf-git ksnip-git woeusb
 #
 # Enable and start necessary services for Teamviewer and SSH
 #
-sudo systemctl enable teamviewerd.service sshd.service
-sudo systemctl start teamviewerd.service sshd.service
+sudo systemctl enable teamviewerd.service sshd.service nordvpnd
+sudo systemctl start teamviewerd.service sshd.service nordvpnd
+sudo gpasswd -aG wheel,games,nordvpn,audio $whoami  
 #
 # Install omz and plugins
 
@@ -107,7 +107,7 @@ git config pull.rebase false
 echo " 
 All software is now installed. If you plan on using 'git',
 then please input name, email and default editor to set it globally.
-If you don't want this, just press 'Ctrl+C' at each prompt.
+If you don't want this, just press 'Ctrl+C' to end this script.
 
 "
 read -p "What is EDITOR do you want to set as default for 'git'?
