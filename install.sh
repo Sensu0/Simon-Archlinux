@@ -37,7 +37,7 @@ okular hplip glances man tldr base-devel pcmanfm qterminal openssh alsa-utils \
 \
 gimp wget bash zsh links kdeconnect ranger i3lock lxappearance \
 \
-woeusb unetbootin qt5ct pavucontrol \
+woeusb unetbootin qt5ct pavucontrol volumeicon \
 \
 `# system tools ` \
 htop gnome-disk-utility gparted bpytop lshw neofetch \

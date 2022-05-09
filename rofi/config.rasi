@@ -180,3 +180,4 @@ configuration {
     spacing: 0px;
     border: 0px 0px 0px 0px;
 }
+@theme "/usr/share/rofi/themes/android_notification.rasi"
