@@ -46,7 +46,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-
+beautiful.font = "DejaVu Sans 14"
 -- This is used later as the default terminal and editor to run.
 terminal = "qterminal"
 editor = os.getenv("EDITOR") or "vim"
@@ -576,16 +576,11 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 --Autostart
 -- awful.spawn.with_shell("iwgtk -i")
--- awful.spawn.with_shell("steam -silent")
--- awful.spawn.with_shell("thunderbird")
--- 1awful.spawn.with_shell("discord --start-minimized")
--- awful.spawn.with_shell("kdeconnect-indicator")
+awful.spawn.with_shell("thunderbird")
+awful.spawn.with_shell("discord --start-minimized")
+awful.spawn.with_shell("kdeconnect-indicator")
 -- awful.spawn.with_shell("cbatticon")
-awful.spawn.with_shell("volumeicon")
 -- awful.spawn.with_shell("snixembed")
+awful.spawn.with_shell("volumeicon")
 awful.spawn.with_shell("davmail")
--- awful.spawn.with_shell("killall -e -q xterm")
-awful.spawn.with_shell("qterminal -e echo 'Setup themes for programs and delete the bottom lines of ~/.config/awesome/rc.lua when done'")
-awful.spawn.with_shell("qt5ct")
-awful.spawn.with_shell("kvantum-qt5")
-awful.spawn.with_shell("lxappearance")
+awful.spawn.with_shell("killall -e -q xterm")

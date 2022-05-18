@@ -37,7 +37,7 @@ okular hplip glances man tldr base-devel pcmanfm qterminal openssh alsa-utils \
 \
 gimp wget bash zsh links kdeconnect ranger i3lock lxappearance \
 \
-woeusb unetbootin qt5ct pavucontrol volumeicon \
+woeusb unetbootin qt5ct pavucontrol volumeicon calc \
 \
 `# system tools ` \
 htop gnome-disk-utility gparted bpytop lshw neofetch \
@@ -45,16 +45,11 @@ htop gnome-disk-utility gparted bpytop lshw neofetch \
 `# multimedia and entertainment` \
 kdenlive vlc obs-studio subtitleeditor ristretto makemkv \
 \
-electronplayer \
-\
 `# Internet` \
 firefox brave-bin google-chrome qbittorrent thunderbird nordvpn-bin davmail \
 \
 `# gaming` \
-steam lutris discord \
-\
-`# emulators` \
-pcsx2 dolphin-emu duckstation-git kega-fusion rpcs3-git mupen64plus-git m64py \
+discord pcsx2 dolphin-emu duckstation-git kega-fusion rpcs3-git mupen64plus-git m64py \
 \
 mednaffe agg desmume-git snes9x-gtk vbam-wx mednafen ppsspp \
 \
@@ -68,14 +63,18 @@ slack-desktop teamviewer discord-rpc-api vimix-icon-theme breeze breeze-gtk \
 \
 xpadneo-dkms vim-tabnine-git vim-badwolf-git ksnip-git woeusb
 #
-# Enable and start necessary services for Teamviewer and SSH
+# Load sg kernel module for makemkv
+sudo echo sg > /etc/modules-load.d/sg.conf
 #
-sudo systemctl enable teamviewerd.service sshd.service nordvpnd
-sudo systemctl start teamviewerd.service sshd.service nordvpnd
-sudo gpasswd -aG wheel,games,nordvpn,audio $whoami  
+# Enable and start necessary sockets. Services are used when a socket is not available
+sudo systemctl enable --now bluetooth.service teamviewerd.service sshd.service nordvpnd.socket
+
+user=$(whoami)
+
+sudo usermod -aG wheel,games,nordvpn,audio $user  
 #
 # Install omz and plugins
-
+#
 # Use sed to prevent zsh from launching/rebooting after omz has installed
 # This will make it possible to execute commands after omz installation.
 sh -c "$(curl -fsSLo ~/install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed 's/exec zsh -l//g')"
@@ -119,3 +118,6 @@ git config --global user.email "$email"
 read -p "What is NAME do you want to set as default for 'git'?
 " $name
 git config --global user.name "$name"
+#
+echo "
+Almost done. If you don't see any errors, then just reboot the system and you'll be done with this."
