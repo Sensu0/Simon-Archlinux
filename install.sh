@@ -31,7 +31,7 @@ makepkg -si --noconfirm && cd - && \
 yay -S --noconfirm --noremovemake --nocleanafter --noredownload \
 --batchinstall --norebuild --sudoloop awesome xorg xorg-xinit \
 `# tools` \
-vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput kvantum-qt5 man-pages \
+vim libreoffice-still libreoffice-still-sv virtualbox cronie rclone lxinput kvantum-qt5 man-pages unzip unrar p7zip \
 \
 okular hplip glances man tldr base-devel pcmanfm qterminal openssh alsa-utils \
 \
